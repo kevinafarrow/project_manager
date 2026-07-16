@@ -1,0 +1,661 @@
+{
+  "format": "pm-import/v1",
+  "project": {
+    "code": "AMBIT",
+    "name": "American Binary SOC 2 Type II",
+    "description": "SOC 2 Type II readiness engagement, Security (Common Criteria) only. Remediation Jul-Aug 2026, observation period Sep-Nov 2026. Budget covers YSecurity effort only; AmBit-internal hours are not tracked.",
+    "total_budget_hours": 167.8
+  },
+  "phases": ["Remediation", "Observation Support", "Audit Support"],
+  "overhead_categories": ["Project management", "Meetings", "Client comms"],
+  "milestones": [
+    { "external_key": "OBS-START", "name": "Observation period begins", "date": "2026-09-01" },
+    { "external_key": "OBS-END", "name": "Observation period ends", "date": "2026-11-30" }
+  ],
+  "tasks": [
+    {
+      "external_key": "CC8.1",
+      "title": "Change management controls",
+      "description": "Single developer pushes directly to production with no review. Enable branch protection on main; require minimum 1 PR approver; block direct pushes; document change-management policy (SAST/DAST gating out of scope). Address first — auditors flag this immediately.",
+      "owner": "Engineering Lead",
+      "phase": "Remediation",
+      "status": "Not Started",
+      "start_date": "2026-07-16",
+      "end_date": "2026-07-31",
+      "estimated_hours": 5,
+      "tag": "AMBIT-CC8.1-change-mgmt",
+      "checklist": [
+        "Enable branch protection on main",
+        "Require minimum 1 PR approver; block direct pushes",
+        "Document the change management policy",
+        "Capture evidence: branch protection settings screenshot",
+        "Capture evidence: PR merge logs showing approvals"
+      ],
+      "depends_on": []
+    },
+    {
+      "external_key": "CC6.3",
+      "title": "User offboarding & access revocation",
+      "description": "No offboarding checklist or access revocation process. Build and test an offboarding checklist; integrate with the HR termination workflow; revoke access same-day.",
+      "owner": "IT / HR",
+      "phase": "Remediation",
+      "status": "Not Started",
+      "start_date": "2026-07-16",
+      "end_date": "2026-07-31",
+      "estimated_hours": 6,
+      "tag": "AMBIT-CC6.3-offboarding",
+      "checklist": [
+        "Draft offboarding checklist covering all in-scope systems",
+        "Integrate checklist with HR termination workflow",
+        "Define same-day access revocation SLA",
+        "Test the procedure end-to-end with a dry run",
+        "Capture evidence: offboarding procedure document",
+        "Capture evidence: completed checklist samples with revocation timestamps"
+      ],
+      "depends_on": []
+    },
+    {
+      "external_key": "CC4.2",
+      "title": "Deficiency tracking & management reporting",
+      "description": "No formal gap/deficiency tracking or escalation process. Implement the gap register (this engagement is the starting point); establish a management reporting cadence with assigned owners.",
+      "owner": "Security / Management",
+      "phase": "Remediation",
+      "status": "In Progress",
+      "start_date": "2026-07-16",
+      "end_date": "2026-07-31",
+      "estimated_hours": 4,
+      "tag": "AMBIT-CC4.2-gap-tracking",
+      "checklist": [
+        "Stand up the gap register with owners and status",
+        "Define escalation criteria for material deficiencies",
+        "Establish management reporting cadence",
+        "Capture evidence: gap register with owners and status",
+        "Capture evidence: management meeting minutes"
+      ],
+      "depends_on": []
+    },
+    {
+      "external_key": "CC1.1",
+      "title": "Policy completion & acknowledgments",
+      "description": "Policies ~70% complete; change control and AI policies incomplete. Complete change management, AI use, and data classification policies; obtain signed acknowledgments from all staff. SANS training should complete concurrently.",
+      "owner": "CEO / Security",
+      "phase": "Remediation",
+      "status": "In Progress",
+      "start_date": "2026-07-20",
+      "end_date": "2026-08-15",
+      "estimated_hours": 8,
+      "tag": "AMBIT-CC1.1-policies",
+      "checklist": [
+        "Complete change management policy",
+        "Complete AI use policy",
+        "Complete data classification policy",
+        "Distribute policy set to all staff",
+        "Collect signed acknowledgments from all personnel",
+        "Capture evidence: final policy documents",
+        "Capture evidence: signed acknowledgment records"
+      ],
+      "depends_on": []
+    },
+    {
+      "external_key": "CC3.2",
+      "title": "Annual risk assessment",
+      "description": "Risk assessment in progress but not completed or approved. Complete, formally approve, and document the annual risk assessment using NIST CSF or ISO 27005.",
+      "owner": "Security Lead / Security",
+      "phase": "Remediation",
+      "status": "In Progress",
+      "start_date": "2026-07-20",
+      "end_date": "2026-08-15",
+      "estimated_hours": 8,
+      "tag": "AMBIT-CC3.2-risk-assessment",
+      "checklist": [
+        "Complete risk identification and analysis (NIST CSF / ISO 27005)",
+        "Document the risk register with ratings",
+        "Obtain executive approval with signature and date",
+        "Capture evidence: approved risk assessment document"
+      ],
+      "depends_on": []
+    },
+    {
+      "external_key": "CC1.4",
+      "title": "Security awareness training",
+      "description": "No security training completed in the past 12 months. Complete SANS security awareness training for all personnel; document completion records. John driving the SANS initiative.",
+      "owner": "HR / IT",
+      "phase": "Remediation",
+      "status": "In Progress",
+      "start_date": "2026-07-22",
+      "end_date": "2026-08-15",
+      "estimated_hours": 3,
+      "tag": "AMBIT-CC1.4-sans-training",
+      "checklist": [
+        "Enroll all personnel in SANS security awareness training",
+        "Track completion to 100%",
+        "Capture evidence: training certificates or LMS records for all staff"
+      ],
+      "depends_on": []
+    },
+    {
+      "external_key": "CC9.2",
+      "title": "Vendor risk management & DPAs",
+      "description": "No formal vendor risk assessment program; DPAs incomplete. Complete DPAs with AWS, Azure, GCP, JustWorks; build a vendor risk register; collect vendor SOC 2 reports. DPAs currently in progress per client.",
+      "owner": "Legal / Security",
+      "phase": "Remediation",
+      "status": "In Progress",
+      "start_date": "2026-07-22",
+      "end_date": "2026-09-30",
+      "estimated_hours": 5,
+      "tag": "AMBIT-CC9.2-vendor-risk",
+      "checklist": [
+        "Complete DPAs with AWS, Azure, GCP, and JustWorks",
+        "Build vendor risk register with ratings",
+        "Collect vendor SOC 2 reports",
+        "Capture evidence: executed DPA documents",
+        "Capture evidence: vendor risk register"
+      ],
+      "depends_on": []
+    },
+    {
+      "external_key": "CC5.3",
+      "title": "Policy adoption & review cycle",
+      "description": "Policies not fully adopted, enforced, or acknowledged. Complete remaining policies (change mgmt, AI use, data classification, BCDR); obtain signed acknowledgments; establish an annual policy review cycle. Overlaps CC1.1 policy completion.",
+      "owner": "Security / HR",
+      "phase": "Remediation",
+      "status": "In Progress",
+      "start_date": "2026-07-27",
+      "end_date": "2026-08-15",
+      "estimated_hours": 5,
+      "tag": "AMBIT-CC5.3-policy-adoption",
+      "checklist": [
+        "Finalize remaining policies (incl. BCDR)",
+        "Obtain signed acknowledgments",
+        "Establish annual policy review schedule",
+        "Capture evidence: final policy set",
+        "Capture evidence: acknowledgment records and review schedule"
+      ],
+      "depends_on": []
+    },
+    {
+      "external_key": "CC6.2",
+      "title": "User provisioning workflow",
+      "description": "No formal access request or provisioning workflow with manager approval. Document the access request workflow; implement in the ticketing system.",
+      "owner": "IT / HR",
+      "phase": "Remediation",
+      "status": "Not Started",
+      "start_date": "2026-07-27",
+      "end_date": "2026-08-12",
+      "estimated_hours": 5,
+      "tag": "AMBIT-CC6.2-provisioning",
+      "checklist": [
+        "Document access request workflow with manager approval",
+        "Implement the workflow in the ticketing system",
+        "Run at least one real request through the workflow",
+        "Capture evidence: access request process document",
+        "Capture evidence: sample approved access tickets"
+      ],
+      "depends_on": []
+    },
+    {
+      "external_key": "CC4.1",
+      "title": "Logging & retention (≥90 days)",
+      "description": "Logging/monitoring inactive with insufficient retention. Establish logging cost-scoped to in-scope systems; retain ≥90 days; configure alerting.",
+      "owner": "IT / Security",
+      "phase": "Remediation",
+      "status": "Not Started",
+      "start_date": "2026-07-29",
+      "end_date": "2026-08-14",
+      "estimated_hours": 5,
+      "tag": "AMBIT-CC4.1-logging",
+      "checklist": [
+        "Scope logging to in-scope systems (cost-controlled)",
+        "Configure ≥90-day retention",
+        "Configure alerting on monitored events",
+        "Capture evidence: log retention policy",
+        "Capture evidence: cloud logging configuration screenshots"
+      ],
+      "depends_on": []
+    },
+    {
+      "external_key": "CC2.1",
+      "title": "Information quality & logging policy",
+      "description": "Logging inactive; policy framework incomplete. Establish cost-scoped logging (≥90-day retention); finalize remaining policies. Retention overlaps CC4.1; policy work overlaps CC1.1.",
+      "owner": "IT / Security",
+      "phase": "Remediation",
+      "status": "Not Started",
+      "start_date": "2026-08-03",
+      "end_date": "2026-08-15",
+      "estimated_hours": 4,
+      "tag": "AMBIT-CC2.1-info-quality",
+      "checklist": [
+        "Confirm retention configuration covers in-scope systems (with CC4.1)",
+        "Finalize remaining policies (with CC1.1)",
+        "Define data quality review procedure",
+        "Capture evidence: retention config, finalized policies, data quality procedure"
+      ],
+      "depends_on": []
+    },
+    {
+      "external_key": "CC6.5",
+      "title": "MFA enforcement",
+      "description": "MFA enforcement on cloud consoles and admin portal not confirmed. Enforce MFA across AWS, Azure, GCP consoles and the admin portal for all users.",
+      "owner": "IT / Security",
+      "phase": "Remediation",
+      "status": "Not Started",
+      "start_date": "2026-08-03",
+      "end_date": "2026-08-14",
+      "estimated_hours": 4,
+      "tag": "AMBIT-CC6.5-mfa",
+      "checklist": [
+        "Enforce MFA on AWS console",
+        "Enforce MFA on Azure console",
+        "Enforce MFA on GCP console",
+        "Enforce MFA on the admin portal",
+        "Capture evidence: MFA enforcement policy",
+        "Capture evidence: cloud IAM screenshots confirming MFA requirement"
+      ],
+      "depends_on": []
+    },
+    {
+      "external_key": "CC3.1",
+      "title": "Security objectives statement",
+      "description": "Security objectives exist across policies but are not consolidated. Consolidate into a signed objectives statement aligned to SOC 2 Security; obtain senior-management approval (no CISO hire required for this scope).",
+      "owner": "Security Lead / CEO",
+      "phase": "Remediation",
+      "status": "Not Started",
+      "start_date": "2026-08-05",
+      "end_date": "2026-08-15",
+      "estimated_hours": 3,
+      "tag": "AMBIT-CC3.1-objectives",
+      "checklist": [
+        "Consolidate objectives from existing policies into one statement",
+        "Align objectives to SOC 2 Security criteria",
+        "Obtain executive signature",
+        "Capture evidence: signed security objectives document"
+      ],
+      "depends_on": []
+    },
+    {
+      "external_key": "CC2.2",
+      "title": "Internal security communication",
+      "description": "No security meetings in the past 3 months; policies not communicated. Establish quarterly security/privacy meeting cadence; distribute policies; collect acknowledgments.",
+      "owner": "Security / HR",
+      "phase": "Remediation",
+      "status": "Not Started",
+      "start_date": "2026-08-05",
+      "end_date": "2026-08-15",
+      "estimated_hours": 3,
+      "tag": "AMBIT-CC2.2-internal-comms",
+      "checklist": [
+        "Establish quarterly security meeting cadence (recurring invite)",
+        "Hold and minute the first meeting",
+        "Distribute policies and collect acknowledgments",
+        "Capture evidence: calendar invites, minutes, distribution records"
+      ],
+      "depends_on": []
+    },
+    {
+      "external_key": "CC1.3",
+      "title": "Org structure & security roles",
+      "description": "Roles undocumented; single individual has unchecked production access. Document org chart and RACI for security roles; add security responsibilities to job descriptions. Production-access remediation tracked under CC8.1.",
+      "owner": "CEO / Engineering Lead",
+      "phase": "Remediation",
+      "status": "Not Started",
+      "start_date": "2026-08-06",
+      "end_date": "2026-08-15",
+      "estimated_hours": 4,
+      "tag": "AMBIT-CC1.3-org-raci",
+      "checklist": [
+        "Document org chart",
+        "Build RACI matrix for security roles",
+        "Add security responsibilities to job descriptions",
+        "Capture evidence: org chart, RACI matrix, updated job descriptions"
+      ],
+      "depends_on": []
+    },
+    {
+      "external_key": "CC3.3",
+      "title": "Fraud risk section (risk assessment)",
+      "description": "No fraud risk assessment exists. Add fraud-risk scenarios as a section within the CC3.2 risk assessment — no separate exercise. Complete after CC3.2 is finished.",
+      "owner": "Security Lead / Legal",
+      "phase": "Remediation",
+      "status": "Not Started",
+      "start_date": "2026-08-17",
+      "end_date": "2026-08-28",
+      "estimated_hours": 2,
+      "tag": "AMBIT-CC3.3-fraud-risk",
+      "checklist": [
+        "Draft fraud-risk scenarios section",
+        "Fold into the approved risk assessment",
+        "Capture evidence: risk assessment with fraud risk section"
+      ],
+      "depends_on": ["CC3.2"]
+    },
+    {
+      "external_key": "CC3.4",
+      "title": "Change-impact risk section",
+      "description": "No process to assess risk impact of infrastructure or business changes. Cover change-impact risk as a section within the risk assessment; reference it in the change-management policy — no separate process.",
+      "owner": "Security / Engineering",
+      "phase": "Remediation",
+      "status": "Not Started",
+      "start_date": "2026-08-17",
+      "end_date": "2026-08-28",
+      "estimated_hours": 2,
+      "tag": "AMBIT-CC3.4-change-impact",
+      "checklist": [
+        "Draft change-impact risk section in the risk assessment",
+        "Reference change-impact review in the change management policy",
+        "Capture evidence: updated policy and sample risk impact review"
+      ],
+      "depends_on": ["CC3.2"]
+    },
+    {
+      "external_key": "CC5.1",
+      "title": "Control-to-risk mapping & access review",
+      "description": "Controls (Intune, GitHub) not mapped to a risk register. After the risk assessment, map controls to risks; conduct one access review and training during the period; track in SecureFrame/ticketing (pentest out of scope). Sequenced after CC3.2.",
+      "owner": "IT / Security",
+      "phase": "Remediation",
+      "status": "Not Started",
+      "start_date": "2026-08-18",
+      "end_date": "2026-09-11",
+      "estimated_hours": 4,
+      "tag": "AMBIT-CC5.1-control-mapping",
+      "checklist": [
+        "Map existing controls to the risk register",
+        "Conduct one user access review",
+        "Track recurring controls in SecureFrame/ticketing",
+        "Capture evidence: control-to-risk mapping",
+        "Capture evidence: access review and training records"
+      ],
+      "depends_on": ["CC3.2"]
+    },
+    {
+      "external_key": "CC6.1",
+      "title": "Cross-cloud IAM architecture",
+      "description": "Cross-cloud IAM not characterized. Document IAM architecture across AWS/Azure/GCP; enforce least-privilege; produce access control diagrams.",
+      "owner": "IT / Security",
+      "phase": "Remediation",
+      "status": "Not Started",
+      "start_date": "2026-08-18",
+      "end_date": "2026-09-12",
+      "estimated_hours": 6,
+      "tag": "AMBIT-CC6.1-iam-architecture",
+      "checklist": [
+        "Inventory IAM roles/policies across AWS, Azure, GCP",
+        "Document IAM architecture with diagrams",
+        "Enforce least-privilege on privileged roles",
+        "Capture evidence: IAM architecture diagrams",
+        "Capture evidence: least-privilege policy documentation"
+      ],
+      "depends_on": []
+    },
+    {
+      "external_key": "CC6.6",
+      "title": "Remote access controls",
+      "description": "Remote access policy not documented; admin portal access not restricted. Document remote access policy; restrict admin portal to authorized identities/IPs; enforce VPN or ZTNA.",
+      "owner": "IT / Security",
+      "phase": "Remediation",
+      "status": "Not Started",
+      "start_date": "2026-08-24",
+      "end_date": "2026-09-11",
+      "estimated_hours": 4,
+      "tag": "AMBIT-CC6.6-remote-access",
+      "checklist": [
+        "Document remote access policy",
+        "Restrict admin portal to authorized identities/IPs",
+        "Enforce VPN/ZTNA for admin functions",
+        "Capture evidence: remote access policy",
+        "Capture evidence: firewall/access control configuration"
+      ],
+      "depends_on": []
+    },
+    {
+      "external_key": "CC7.2",
+      "title": "Log aggregation & vulnerability scanning",
+      "description": "No SIEM or centralized log aggregation; no vulnerability scans in the past 12 months. Use cloud-native log aggregation with anomaly alerts (no SIEM); run a recurring low-cost vulnerability scan. A formal pentest is not required for this scope.",
+      "owner": "IT / Security",
+      "phase": "Remediation",
+      "status": "Not Started",
+      "start_date": "2026-08-24",
+      "end_date": "2026-09-18",
+      "estimated_hours": 5,
+      "tag": "AMBIT-CC7.2-log-vuln",
+      "checklist": [
+        "Configure cloud-native log aggregation (CloudTrail / Azure Monitor / GCP)",
+        "Configure anomaly alert rules",
+        "Stand up recurring vulnerability scanning; run first scan",
+        "Capture evidence: aggregation config and alert rules",
+        "Capture evidence: first vulnerability scan report"
+      ],
+      "depends_on": []
+    },
+    {
+      "external_key": "CC6.8",
+      "title": "Dependency scanning & PR enforcement",
+      "description": "No SAST/DAST in CI/CD. Enforce PR reviews and branch protection; add Dependabot dependency scanning (dedicated SAST/DAST out of scope).",
+      "owner": "Engineering",
+      "phase": "Remediation",
+      "status": "Not Started",
+      "start_date": "2026-08-31",
+      "end_date": "2026-09-15",
+      "estimated_hours": 4,
+      "tag": "AMBIT-CC6.8-dependabot",
+      "checklist": [
+        "Enable Dependabot dependency scanning",
+        "Verify PR review + branch protection enforcement (with CC8.1)",
+        "Capture evidence: CI/CD config showing Dependabot",
+        "Capture evidence: PR review and branch-protection settings"
+      ],
+      "depends_on": ["CC8.1"]
+    },
+    {
+      "external_key": "CC7.3",
+      "title": "Security event triage process",
+      "description": "No defined event triage process or escalation criteria. Define triage criteria and escalation path; establish an on-call or coverage model.",
+      "owner": "Security / Engineering",
+      "phase": "Remediation",
+      "status": "Not Started",
+      "start_date": "2026-08-31",
+      "end_date": "2026-09-18",
+      "estimated_hours": 4,
+      "tag": "AMBIT-CC7.3-event-triage",
+      "checklist": [
+        "Define event triage criteria and severity levels",
+        "Document escalation path",
+        "Establish on-call/coverage model",
+        "Capture evidence: triage runbook",
+        "Capture evidence: on-call schedule or coverage documentation"
+      ],
+      "depends_on": []
+    },
+    {
+      "external_key": "CC5.2",
+      "title": "Endpoint policy (macOS/Linux)",
+      "description": "Intune covers Windows only. Keep Intune for Windows; adopt a lightweight macOS/Linux endpoint policy (no Qualys migration); code controls via Dependabot + PR review.",
+      "owner": "IT / Engineering",
+      "phase": "Remediation",
+      "status": "Not Started",
+      "start_date": "2026-09-01",
+      "end_date": "2026-09-22",
+      "estimated_hours": 4,
+      "tag": "AMBIT-CC5.2-endpoints",
+      "checklist": [
+        "Document lightweight macOS/Linux endpoint policy",
+        "Confirm Intune coverage for the Windows fleet",
+        "Capture evidence: endpoint policy documents",
+        "Capture evidence: Dependabot config and baseline configs"
+      ],
+      "depends_on": []
+    },
+    {
+      "external_key": "CC7.1",
+      "title": "Configuration baselines & drift rules",
+      "description": "No CMDB or configuration drift detection. Document configuration baselines; use native cloud config rules; retain logs ≥90 days (no CMDB/drift product). Retention overlaps CC4.1/CC2.1.",
+      "owner": "IT / Security",
+      "phase": "Remediation",
+      "status": "Not Started",
+      "start_date": "2026-09-07",
+      "end_date": "2026-09-25",
+      "estimated_hours": 4,
+      "tag": "AMBIT-CC7.1-config-baselines",
+      "checklist": [
+        "Document configuration baselines for in-scope systems",
+        "Enable native cloud config rules (AWS Config / Azure Policy / GCP)",
+        "Capture evidence: baseline configs and config rules",
+        "Capture evidence: retention configuration"
+      ],
+      "depends_on": []
+    },
+    {
+      "external_key": "CC7.4",
+      "title": "Incident response plan & tabletop",
+      "description": "No IR exercises in the past 12 months; IRP completeness not confirmed. Finalize the Incident Response Plan; assign roles; conduct and document a tabletop exercise.",
+      "owner": "Security",
+      "phase": "Remediation",
+      "status": "Not Started",
+      "start_date": "2026-09-08",
+      "end_date": "2026-09-30",
+      "estimated_hours": 6,
+      "tag": "AMBIT-CC7.4-irp-tabletop",
+      "checklist": [
+        "Finalize the Incident Response Plan",
+        "Assign IR roles",
+        "Conduct tabletop exercise",
+        "Document exercise results and lessons learned",
+        "Capture evidence: exec-approved IRP",
+        "Capture evidence: tabletop exercise report"
+      ],
+      "depends_on": []
+    },
+    {
+      "external_key": "CC6.7",
+      "title": "Encryption in transit & data handling",
+      "description": "No DLP controls; encryption in transit not confirmed. Enforce TLS; document encryption standards; apply policy-based handling restrictions (no DLP tooling).",
+      "owner": "IT / Security",
+      "phase": "Remediation",
+      "status": "Not Started",
+      "start_date": "2026-09-28",
+      "end_date": "2026-10-16",
+      "estimated_hours": 4,
+      "tag": "AMBIT-CC6.7-encryption",
+      "checklist": [
+        "Verify/enforce TLS on all in-scope data flows",
+        "Document encryption standards",
+        "Document policy-based data handling restrictions",
+        "Capture evidence: TLS configuration evidence",
+        "Capture evidence: encryption standards and data-handling policy"
+      ],
+      "depends_on": []
+    },
+    {
+      "external_key": "CC9.1",
+      "title": "Business continuity / disaster recovery plan",
+      "description": "No BCDR plan completed or exercised in the past 12 months. Document a right-sized BCP/DRP; define RTO/RPO; obtain management approval (full live exercise deferred — Availability out of scope).",
+      "owner": "Operations / Engineering",
+      "phase": "Remediation",
+      "status": "Not Started",
+      "start_date": "2026-09-28",
+      "end_date": "2026-10-23",
+      "estimated_hours": 5,
+      "tag": "AMBIT-CC9.1-bcdr",
+      "checklist": [
+        "Draft right-sized BCP/DRP",
+        "Define RTO/RPO for in-scope systems",
+        "Obtain management approval",
+        "Walk through the plan (tabletop-level exercise)",
+        "Capture evidence: BCP/DRP documents and exercise notes"
+      ],
+      "depends_on": []
+    },
+    {
+      "external_key": "CC7.5",
+      "title": "RTO/RPO & post-incident review",
+      "description": "No post-incident review process; RTO/RPO not defined. Define RTO/RPO for in-scope systems; add a post-incident review step to the IRP.",
+      "owner": "Security / Engineering",
+      "phase": "Remediation",
+      "status": "Not Started",
+      "start_date": "2026-10-01",
+      "end_date": "2026-10-23",
+      "estimated_hours": 3,
+      "tag": "AMBIT-CC7.5-post-incident",
+      "checklist": [
+        "Define RTO/RPO (coordinate with CC9.1)",
+        "Add post-incident review step to the IRP",
+        "Create post-incident review template",
+        "Capture evidence: updated IRP with RTO/RPO and review template"
+      ],
+      "depends_on": ["CC7.4"]
+    },
+    {
+      "external_key": "CC1.2",
+      "title": "Security oversight committee",
+      "description": "No independent board or security oversight committee. Designate an existing-leadership security/risk committee with a short charter; hold and minute one meeting (no new governing body).",
+      "owner": "CEO",
+      "phase": "Remediation",
+      "status": "Not Started",
+      "start_date": "2026-10-05",
+      "end_date": "2026-10-23",
+      "estimated_hours": 2,
+      "tag": "AMBIT-CC1.2-oversight",
+      "checklist": [
+        "Draft committee charter",
+        "Hold and minute first committee meeting",
+        "Capture evidence: charter and first meeting minutes"
+      ],
+      "depends_on": []
+    },
+    {
+      "external_key": "CC1.5",
+      "title": "Accountability for policy compliance",
+      "description": "No performance management or disciplinary process tied to security. Add security responsibilities to job descriptions and performance reviews; publish disciplinary policy.",
+      "owner": "HR / CEO",
+      "phase": "Remediation",
+      "status": "Not Started",
+      "start_date": "2026-10-05",
+      "end_date": "2026-10-23",
+      "estimated_hours": 2,
+      "tag": "AMBIT-CC1.5-accountability",
+      "checklist": [
+        "Add security KPIs to performance review templates",
+        "Publish disciplinary policy",
+        "Capture evidence: updated job descriptions and review templates",
+        "Capture evidence: disciplinary policy document"
+      ],
+      "depends_on": []
+    },
+    {
+      "external_key": "CC2.3",
+      "title": "External security communications",
+      "description": "No formal external security communication process. Publish customer-facing security commitments; define the process for notifying customers of security events.",
+      "owner": "Legal / Security",
+      "phase": "Remediation",
+      "status": "Not Started",
+      "start_date": "2026-10-12",
+      "end_date": "2026-10-30",
+      "estimated_hours": 3,
+      "tag": "AMBIT-CC2.3-external-comms",
+      "checklist": [
+        "Publish customer-facing security commitments (security page or ToS clauses)",
+        "Define customer security-event notification procedure",
+        "Capture evidence: published commitments",
+        "Capture evidence: notification procedure document"
+      ],
+      "depends_on": []
+    },
+    {
+      "external_key": "CC6.4",
+      "title": "Physical access documentation",
+      "description": "Physical access controls not formally documented; primarily cloud infrastructure. Document physical access controls for any on-prem equipment; confirm cloud-only scope with the auditor.",
+      "owner": "Facilities / IT",
+      "phase": "Remediation",
+      "status": "Not Started",
+      "start_date": "2026-12-01",
+      "end_date": "2026-12-18",
+      "estimated_hours": 2,
+      "tag": "AMBIT-CC6.4-physical",
+      "checklist": [
+        "Inventory any on-prem equipment in scope",
+        "Document physical access controls or confirm cloud-only scope with auditor",
+        "Capture evidence: physical access documentation or auditor confirmation"
+      ],
+      "depends_on": []
+    }
+  ]
+}

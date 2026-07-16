@@ -1,0 +1,10 @@
+services:
+  engagement-pm:
+    build: .
+    container_name: engagement-pm
+    # 26248 = "AMBIT" on a phone keypad — unlikely to collide with anything
+    ports:
+      - "26248:26248"
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
