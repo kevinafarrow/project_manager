@@ -2,9 +2,9 @@ services:
   engagement-pm:
     build: .
     container_name: engagement-pm
-    # 26248 = "AMBIT" on a phone keypad — unlikely to collide with anything
+    # 42688 = "GANTT" on a phone keypad — unlikely to collide with anything
     ports:
-      - "26248:26248"
+      - "42688:42688"
     volumes:
       - ./data:/app/data
     restart: unless-stopped

@@ -8,18 +8,18 @@ toggle.
 ## Run
 
 ```bash
-docker compose up -d --build   # recommended → http://localhost:26248
+docker compose up -d --build   # recommended → http://localhost:42688
 ```
 
 Or without Docker:
 
 ```bash
-./run.sh            # builds frontend if needed, serves everything at http://localhost:26248
+./run.sh            # builds frontend if needed, serves everything at http://localhost:42688
 REBUILD=1 ./run.sh  # force a frontend rebuild
-./dev.sh            # dev mode: uvicorn --reload + Vite HMR (UI at :5173, API at :26248)
+./dev.sh            # dev mode: uvicorn --reload + Vite HMR (UI at :5173, API at :42688)
 ```
 
-The port is 26248 — "AMBIT" on a phone keypad. Data lives in `data/pm.sqlite3`
+The port is 42688 — "GANTT" on a phone keypad. Data lives in `data/pm.sqlite3`
 (gitignored; mounted as a volume by docker-compose, so the container and local
 runs share the same database). For local runs, Node is expected at
 `~/.local/opt/node` (see `run.sh`).

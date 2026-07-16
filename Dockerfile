@@ -14,6 +14,6 @@ RUN pip install --no-cache-dir -r backend/requirements.txt
 COPY backend/ backend/
 COPY --from=frontend /app/frontend/dist frontend/dist
 
-EXPOSE 26248
+EXPOSE 42688
 VOLUME ["/app/data"]
-CMD ["uvicorn", "backend.app.main:app", "--host", "0.0.0.0", "--port", "26248"]
+CMD ["uvicorn", "backend.app.main:app", "--host", "0.0.0.0", "--port", "42688"]

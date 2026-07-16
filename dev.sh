@@ -4,7 +4,7 @@ set -euo pipefail
 cd "$(dirname "$0")"
 export PATH="$HOME/.local/opt/node/bin:$PATH"
 
-.venv/bin/uvicorn backend.app.main:app --port 26248 --reload &
+.venv/bin/uvicorn backend.app.main:app --port 42688 --reload &
 BACK=$!
 trap 'kill $BACK' EXIT
 (cd frontend && npm run dev)

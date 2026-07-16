@@ -14,5 +14,5 @@ if [ ! -d frontend/dist ] || [ "${REBUILD:-}" = "1" ]; then
   (cd frontend && npm install --silent && npm run build)
 fi
 
-echo "Engagement PM → http://localhost:${PORT:-26248}"
-exec .venv/bin/uvicorn backend.app.main:app --port "${PORT:-26248}"
+echo "Engagement PM → http://localhost:${PORT:-42688}"
+exec .venv/bin/uvicorn backend.app.main:app --port "${PORT:-42688}"
