@@ -79,4 +79,19 @@ export const api = {
 
   importArtifact: (artifact: unknown, commit: boolean) =>
     req<ImportResult>('POST', '/api/import', { artifact, commit }),
+
+  restoreBackup: async (file: File) => {
+    const body = new FormData()
+    body.append('file', file)
+    const res = await fetch('/api/restore', { method: 'POST', body })
+    if (!res.ok) {
+      let detail = res.statusText
+      try {
+        const j = await res.json()
+        detail = typeof j.detail === 'string' ? j.detail : JSON.stringify(j.detail)
+      } catch { /* keep statusText */ }
+      throw new Error(detail)
+    }
+    return res.json() as Promise<{ restored: boolean; counts: Record<string, number> }>
+  },
 }

@@ -24,6 +24,33 @@ The port is 42688 — "GANTT" on a phone keypad. Data lives in `data/pm.sqlite3`
 runs share the same database). For local runs, Node is expected at
 `~/.local/opt/node` (see `run.sh`).
 
+## Backup & migration
+
+A backup is a full, consistent SQLite snapshot of everything — all projects, tasks,
+logged hours, and history — taken through SQLite's online backup API, so it's safe
+to take while the app is running.
+
+- **From the UI:** Settings → **Backup & restore** → *Download backup*. To move to a
+  new host, bring the app up there and use *Restore from backup…* with the downloaded
+  file.
+- **Scripted / scheduled:** `./backup.sh` writes a timestamped copy into `backups/`
+  (override the directory with an argument, the port with `PORT=`). Handy in a cron
+  job. Restore from the CLI with
+  `curl -f -F "file=@backups/<file>.sqlite3" http://localhost:42688/api/restore`.
+
+Restore validates the upload is a sound SQLite database carrying this app's schema
+before swapping it in, and first saves the current database as
+`data/pm.sqlite3.pre-restore` so a bad restore can be undone.
+
+Endpoints: `GET /api/backup`, `POST /api/restore` (multipart `file`).
+
+## Tests
+
+```bash
+.venv/bin/python -m pip install -r backend/requirements-dev.txt
+.venv/bin/python -m pytest backend/tests/
+```
+
 ## Concepts
 
 - **Project** — one engagement, with a total hours budget (e.g. AmBit: 167.8h of
