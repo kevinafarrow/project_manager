@@ -6,12 +6,12 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
 from .db import init_db
-from . import crud_routes, time_routes, importer, stats, report
+from . import crud_routes, time_routes, importer, stats, report, backup_routes
 
 app = FastAPI(title="Engagement PM")
 init_db()
 
-for module in (crud_routes, time_routes, importer, stats, report):
+for module in (crud_routes, time_routes, importer, stats, report, backup_routes):
     app.include_router(module.router, prefix="/api")
 
 DIST = Path(__file__).resolve().parents[2] / "frontend" / "dist"

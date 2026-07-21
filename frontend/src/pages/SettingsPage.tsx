@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useAction, useApp } from '../state'
 import { api } from '../api'
 import { todayISO } from '../dates'
@@ -6,6 +6,24 @@ import { todayISO } from '../dates'
 export default function SettingsPage() {
   const { current, currentId, selectProject, reloadProjects, toast } = useApp()
   const run = useAction()
+
+  const restoreInput = useRef<HTMLInputElement>(null)
+  const [restoring, setRestoring] = useState(false)
+  const restore = async (file: File) => {
+    if (!window.confirm(
+      `Restore from "${file.name}"? This REPLACES the entire database — every project, ` +
+      'task, and logged hour — with the contents of the backup. The current database is ' +
+      'saved alongside it as pm.sqlite3.pre-restore first.')) return
+    setRestoring(true)
+    try {
+      const { counts } = await api.restoreBackup(file)
+      toast(`Restored ${counts.projects} project(s), ${counts.time_entries} time entries. Reloading…`)
+      setTimeout(() => window.location.reload(), 1200)
+    } catch (e) {
+      toast(e instanceof Error ? e.message : String(e), true)
+      setRestoring(false)
+    }
+  }
 
   // project form
   const [pName, setPName] = useState('')
@@ -86,6 +104,37 @@ export default function SettingsPage() {
           <button className="btn primary" onClick={createProject}>Create project</button>
           <p className="hint" style={{ marginTop: 8 }}>
             Tip: importing an artifact on the Import page creates the project automatically.
+          </p>
+        </div>
+
+        <div className="card card-pad">
+          <h2>Backup &amp; restore</h2>
+          <p className="hint" style={{ marginTop: 0 }}>
+            A backup is a full, consistent copy of the database (all projects, tasks, hours,
+            and history). Use it to migrate to another host or as a point-in-time snapshot:
+            download here, then restore on the destination.
+          </p>
+          <div style={{ display: 'flex', gap: 8, marginTop: 4, flexWrap: 'wrap' }}>
+            <a className="btn primary" href="/api/backup">Download backup</a>
+            <input
+              ref={restoreInput}
+              type="file"
+              accept=".sqlite3,.sqlite,.db,application/octet-stream"
+              style={{ display: 'none' }}
+              onChange={(e) => {
+                const file = e.target.files?.[0]
+                e.target.value = ''  // allow re-selecting the same file later
+                if (file) restore(file)
+              }}
+            />
+            <button className="btn" disabled={restoring}
+              onClick={() => restoreInput.current?.click()}>
+              {restoring ? 'Restoring…' : 'Restore from backup…'}
+            </button>
+          </div>
+          <p className="hint" style={{ marginTop: 8 }}>
+            Restoring replaces everything currently in the app. The pre-restore database is
+            kept as <code>pm.sqlite3.pre-restore</code> in the data directory.
           </p>
         </div>
 
